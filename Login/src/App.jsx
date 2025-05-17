@@ -55,7 +55,7 @@ function App() {
         <h1 className="text-2xl font-bold text-center text-green-600 mb-2">
           GeeksforGeeks
         </h1>
-        <p className="text-center mb-4">Enter your login credentials</p>
+        <h4 className="text-center mb-4">Enter your login credentials</h4>
 
         <form onSubmit={handleSubmit}>
           <Label htmlFor="username" children="Username:" />

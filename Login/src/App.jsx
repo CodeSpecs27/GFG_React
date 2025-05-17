@@ -65,11 +65,13 @@ function App() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <p className={`text-sm text-red-500 mb-3 ${
+          <p className={`text-sm mb-3 ${
                userNameStatus === "Valid username."
                 ? "text-green-600"
                 : "text-red-500"
-          }`}>{userNameStatus}</p>
+          }`}>
+              {userNameStatus}
+          </p>
           <Label htmlFor="password" children="Password:" />
           <Input
             id="password"

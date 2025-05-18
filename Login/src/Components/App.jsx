@@ -1,10 +1,10 @@
 import React from 'react'
-import {Login} from './Login'
+import { Layout } from './Layout'
 
 export const App = () => {
   return (
     <>
-      <Login/>
+      <Layout/>
     </>
   )
 }

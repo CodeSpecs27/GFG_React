@@ -51,8 +51,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4 sm:px-6 lg:px-8">
-      <div className="bg-white p-6 sm:p-8 rounded-xl shadow-md w-full max-w-md">
+    <>
         <h1 className="text-2xl font-bold text-center text-green-600 mb-2">
           GeeksforGeeks
         </h1>
@@ -99,8 +98,7 @@ export const Login = () => {
             Create an account
           </a>
         </p>
-      </div>
-    </div>
+    </>
   );
 }
 

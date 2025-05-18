@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import Input from "./Input";
 import Label from "./Label";
-import Button from "./button";
+import Button from "./Button";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -44,9 +44,10 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const isUsernameValid = validateUsername();
+    setTimeout(() => {
     if (isUsernameValid) {
       alert("Form submitted successfully");
-    }
+    }}, 1000);
   };
 
   return (

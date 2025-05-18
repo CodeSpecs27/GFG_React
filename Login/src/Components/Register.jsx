@@ -4,7 +4,7 @@ import { Input } from "./Input";
 import { Button } from "./Button";
 import { useLogin } from "../Hooks/useLogin";
 
-export const Register = ({onSwitch}) => {
+export const Register = ({ onSwitch }) => {
   const {
     username,
     setUsername,
@@ -26,8 +26,8 @@ export const Register = ({onSwitch}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const isValid = validateUsername() && validateEmail() && validateMobile();
-    validateMobile()
-    validateEmail()
+    validateMobile();
+    validateEmail();
     setTimeout(() => {
       if (isValid) {
         alert("User Registered Successfully");
@@ -41,7 +41,8 @@ export const Register = ({onSwitch}) => {
       <h1 className="text-2xl font-bold text-center text-black-600 mb-2">
         Create Account
       </h1>
-      <p className="text-center mb-4">Already have an account ?{" "}
+      <p className="text-center mb-4">
+        Already have an account ?{" "}
         <button
           type="button"
           className="text-blue-500 hover:underline"
@@ -77,9 +78,7 @@ export const Register = ({onSwitch}) => {
         />
         <p
           className={`text-sm mb-3 ${
-            emailStatus === "Valid Email!" 
-              ? "text-green-600" 
-              : "text-red-500"
+            emailStatus === "Valid Email!" ? "text-green-600" : "text-red-500"
           }`}
         >
           {emailStatus}

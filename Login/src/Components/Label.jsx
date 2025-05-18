@@ -1,6 +1,7 @@
 import React from 'react'
 
-function Label({htmlFor,children}) {
+
+export const Label = ({htmlFor,children}) => {
   return (
     <label htmlFor={htmlFor} className="block mb-1 font-medium">
         {children}
@@ -8,4 +9,3 @@ function Label({htmlFor,children}) {
   )
 }
 
-export default Label

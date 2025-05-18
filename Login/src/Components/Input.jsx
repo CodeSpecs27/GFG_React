@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Input({id,type,value,onChange}) {
+export const Input = ({id,type,value,onChange}) => {
   return (
     <input
       id={id}
@@ -13,4 +13,4 @@ function Input({id,type,value,onChange}) {
   )
 }
 
-export default Input
+

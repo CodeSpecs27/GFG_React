@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Button({type,children}) {
+export const Button = ({type,children}) => {
   return (
     <button
       type={type}
@@ -11,4 +11,4 @@ function Button({type,children}) {
   )
 }
 
-export default Button
+

@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
 
-import Input from "./Input";
-import Label from "./Label";
-import Button from "./Button";
+import {Input} from "./Input";
+import {Label} from "./Label";
+import {Button} from "./Button";
 
-function App() {
+export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [userNameStatus, setUserNameStatus] = useState("");
@@ -104,4 +104,4 @@ function App() {
   );
 }
 
-export default App;
+

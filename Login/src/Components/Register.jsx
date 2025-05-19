@@ -1,10 +1,13 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { Label } from "./Label";
 import { Input } from "./Input";
 import { Button } from "./Button";
 import { useLogin } from "../Hooks/useLogin";
 
 export const Register = ({ onSwitch }) => {
+  const [submitAttempt, setSubmitAttempt] = useState(false);
+
   const {
     username,
     setUsername,
@@ -25,16 +28,28 @@ export const Register = ({ onSwitch }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isValid = validateUsername() && validateEmail() && validateMobile();
-    validateMobile();
+    validateUsername();
     validateEmail();
-    setTimeout(() => {
-      if (isValid) {
-        alert("User Registered Successfully");
-      }
-      onSwitch(username);
-    }, 1000);
+    validateMobile();
+    setSubmitAttempt(true);
   };
+
+  useEffect(() => {
+    if (
+      submitAttempt &&
+      userNameStatus === "Valid username!" &&
+      emailStatus === "Valid Email!" &&
+      mobileStatus === "Valid Phone Number!"
+    ) {
+      setTimeout(() => {
+        alert("User Registered Successfully");
+        onSwitch();
+      }, 500);
+      setSubmitAttempt(false); // reset for next submit
+    }
+  }, [
+    submitAttempt
+  ]);
 
   return (
     <>

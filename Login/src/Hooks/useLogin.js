@@ -1,38 +1,48 @@
 import { useState } from "react";
 
 export const useLogin = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [userNameStatus, setUserNameStatus] = useState("");
-  const [passwordStatus, setPasswordStatus] = useState("");
-  const [email, setEmail] = useState("");
-  const [emailStatus, setEmailStatus] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [mobileStatus, setMobileStatus] = useState("");
+  const [state, setState] = useState({
+    username: "",
+    password: "",
+    userNameStatus: "",
+    passwordStatus: "",
+    email: "",
+    emailStatus: "",
+    mobile: "",
+    mobileStatus: "",
+  });
+
+  // Helper to update state fields
+  const setField = (field, value) => {
+    setState((prev) => ({ ...prev, [field]: value }));
+  };
 
   // validate username
   const validateUsername = () => {
     const regex = /^[a-zA-Z\s]+$/;
-    if (username.trim() === "") {
-      setUserNameStatus("Username is required!");
+    if (state.username.trim() === "") {
+      setField("userNameStatus", "Username is required!");
       return false;
     }
-    if (!regex.test(username)) {
-      setUserNameStatus("Username can only contain letters and spaces!");
+    if (!regex.test(state.username)) {
+      setField(
+        "userNameStatus",
+        "Username can only contain letters and spaces!"
+      );
       return false;
     }
-    setUserNameStatus("Valid username!");
+    setField("userNameStatus", "Valid username!");
     return true;
   };
 
   // check password strength
   const checkPasswordStrength = (password) => {
     if (password.length < 6) {
-      setPasswordStatus("Weak Password!");
+      setField("passwordStatus", "Weak Password!");
     } else if (/^(?=.*[0-9])(?=.*[!@#$%^&*])/.test(password)) {
-      setPasswordStatus("Strong Password!");
+      setField("passwordStatus", "Strong Password!");
     } else {
-      setPasswordStatus("Medium Password!");
+      setField("passwordStatus", "Medium Password!");
     }
   };
 
@@ -40,16 +50,16 @@ export const useLogin = () => {
   const validateEmail = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (email.trim() === "") {
-      setEmailStatus("Fill Email!");
+    if (state.email.trim() === "") {
+      setField("emailStatus", "Fill Email!");
       return false;
     }
 
-    if (!emailRegex.test(email)) {
-      setEmailStatus("Invalid Email Format!");
+    if (!emailRegex.test(state.email)) {
+      setField("emailStatus", "Invalid Email Format!");
       return false;
     }
-    setEmailStatus("Valid Email!");
+    setField("emailStatus", "Valid Email!");
     return true;
   };
 
@@ -57,42 +67,35 @@ export const useLogin = () => {
   const validateMobile = () => {
     const phoneRegex = /^\d{10}$/;
 
-    if (mobile.trim() === "") {
-      setMobileStatus("Fill Phone Number!");
+    if (state.mobile.trim() === "") {
+      setField("mobileStatus", "Fill Phone Number!");
       return false;
     }
-    if (!phoneRegex.test(mobile)) {
-      setMobileStatus("Invalid Phone Number Format!");
+    if (!phoneRegex.test(state.mobile)) {
+      setField("mobileStatus", "Invalid Phone Number Format!");
       return false;
     }
-    if (mobile.length < 10) {
-      setMobileStatus("Phone Number must be 10 digits!");
+    if (state.mobile.length < 10) {
+      setField("mobileStatus", "Phone Number must be 10 digits!");
       return false;
     }
-    setMobileStatus("Valid Phone Number!");
+    setField("mobileStatus", "Valid Phone Number!");
     return true;
   };
 
   // handle password change
   const handlePasswordChange = (e) => {
     const password = e.target.value;
-    setPassword(password);
+    setField("password", password);
     checkPasswordStrength(password);
   };
 
   return {
-    username,
-    setUsername,
-    password,
-    setPassword,
-    userNameStatus,
-    passwordStatus,
-    email,
-    setEmail,
-    emailStatus,
-    mobile,
-    setMobile,
-    mobileStatus,
+    ...state,
+    setUsername: (v) => setField("username", v),
+    setPassword: (v) => setField("password", v),
+    setEmail: (v) => setField("email", v),
+    setMobile: (v) => setField("mobile", v),
     validateUsername,
     validateEmail,
     validateMobile,

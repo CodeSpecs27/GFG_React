@@ -4,6 +4,7 @@ import { Label } from "./Label";
 import { Input } from "./Input";
 import { Button } from "./Button";
 import { useLogin } from "../Hooks/useLogin";
+import { toast } from "react-toastify";
 
 export const Register = ({ onSwitch }) => {
   const [submitAttempt, setSubmitAttempt] = useState(false);
@@ -42,9 +43,9 @@ export const Register = ({ onSwitch }) => {
       mobileStatus === "Valid Phone Number!"
     ) {
       setTimeout(() => {
-        alert("User Registered Successfully");
+        toast.success("User Registered Successfully");
         onSwitch();
-      }, 500);
+      }, 1000);
       setSubmitAttempt(false); // reset for next submit
     }
   }, [

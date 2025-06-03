@@ -1,9 +1,9 @@
 import React from "react";
 import { useLogin } from "../Hooks/useLogin";
-
 import { Input } from "./Input";
 import { Label } from "./Label";
 import { Button } from "./Button";
+import { toast } from "react-toastify";
 
 export const Login = ({ onSwitch, username }) => {
   const {
@@ -21,7 +21,7 @@ export const Login = ({ onSwitch, username }) => {
     const isUsernameValid = validateUsername();
     setTimeout(() => {
       if (isUsernameValid) {
-        alert("User LoggedIn successfully");
+        toast.success("User LoggedIn successfully");
       }
     }, 1000);
   };

@@ -4,6 +4,7 @@ import { Label } from "./Label";
 import { Input } from "./Input";
 import { Button } from "./Button";
 import { useLogin } from "../Hooks/useLogin";
+import { toast } from "react-toastify";
 
 export const Register = ({ onSwitch }) => {
   const [submitAttempt, setSubmitAttempt] = useState(false);
@@ -43,7 +44,7 @@ export const Register = ({ onSwitch }) => {
     ) {
       setTimeout(() => {
         alert("User Registered Successfully");
-        onSwitch(username);
+        onSwitch();
       }, 500);
       setSubmitAttempt(false); // reset for next submit
     }

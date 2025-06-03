@@ -43,7 +43,7 @@ export const Register = ({ onSwitch }) => {
       mobileStatus === "Valid Phone Number!"
     ) {
       setTimeout(() => {
-        alert("User Registered Successfully");
+        toast.success("User Registered Successfully");
         onSwitch();
       }, 500);
       setSubmitAttempt(false); // reset for next submit

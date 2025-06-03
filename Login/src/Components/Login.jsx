@@ -5,9 +5,9 @@ import { Input } from "./Input";
 import { Label } from "./Label";
 import { Button } from "./Button";
 
-export const Login = ({ onSwitch }) => {
+export const Login = ({ onSwitch, username }) => {
   const {
-    username,
+    username: stateUsername,
     setUsername,
     password,
     userNameStatus,

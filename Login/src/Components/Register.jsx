@@ -43,7 +43,7 @@ export const Register = ({ onSwitch }) => {
     ) {
       setTimeout(() => {
         alert("User Registered Successfully");
-        onSwitch();
+        onSwitch(username);
       }, 500);
       setSubmitAttempt(false); // reset for next submit
     }

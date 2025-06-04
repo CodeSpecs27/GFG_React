@@ -38,7 +38,7 @@ export const Login = ({ onSwitch, username }) => {
         <Input
           id="username"
           type="text"
-          value={username}
+          value={stateUsername}
           onChange={(e) => setUsername(e.target.value)}
         />
         <p

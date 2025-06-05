@@ -32,20 +32,24 @@ export const Register = ({ onSwitch }) => {
     validateUsername();
     validateEmail();
     validateMobile();
-    setSubmitAttempt(true);
+    if(validateUsername() && validateEmail() && validateMobile()) {
+      setSubmitAttempt(true);
+      console.log(submitAttempt);
+    }
+    else {
+      toast.error("Please fill all fields correctly!");
+    }  
   };
 
   useEffect(() => {
-    if (
-      submitAttempt &&
-      userNameStatus === "Valid username!" &&
-      emailStatus === "Valid Email!" &&
-      mobileStatus === "Valid Phone Number!"
-    ) {
+    console.log(submitAttempt);
+    if (submitAttempt) {
+      console.log(submitAttempt);
+      toast.success("User Registered Successfully");
       setTimeout(() => {
-        toast.success("User Registered Successfully");
-        onSwitch();
-      }, 500);
+        
+        onSwitch(username);
+      }, 1500);
       setSubmitAttempt(false); // reset for next submit
     }
   }, [

@@ -19,11 +19,12 @@ export const Login = ({ onSwitch, username }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const isUsernameValid = validateUsername();
-    setTimeout(() => {
       if (isUsernameValid) {
         toast.success("User LoggedIn successfully");
       }
-    }, 1000);
+      else {
+        toast.error("Please fill username correctly!");
+      }
   };
 
   return (
@@ -38,7 +39,7 @@ export const Login = ({ onSwitch, username }) => {
         <Input
           id="username"
           type="text"
-          value={stateUsername}
+          value={username ? username: stateUsername}
           onChange={(e) => setUsername(e.target.value)}
         />
         <p
